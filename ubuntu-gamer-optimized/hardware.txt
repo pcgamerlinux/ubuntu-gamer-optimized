@@ -1,0 +1,137 @@
+franklin@pcgamerlinux:~$ sudo inxi -Faz --no-host
+System:
+  Kernel: 6.14.0-15-generic arch: x86_64 bits: 64 compiler: gcc v: 14.2.0
+    clocksource: tsc avail: hpet,acpi_pm
+    parameters: BOOT_IMAGE=/@/boot/vmlinuz-6.14.0-15-generic
+    root=UUID=0bc34cf3-bce3-4371-bd72-4f0ca40e055f ro rootflags=subvol=@
+    quiet splash vt.handoff=7
+  Desktop: KDE Plasma v: 6.3.4 tk: Qt v: N/A wm: kwin_x11 dm: SDDM
+    Distro: Ubuntu 25.04 (Plucky Puffin)
+Machine:
+  Type: Desktop Mobo: ASRock model: B450M Steel Legend serial: <filter>
+    uuid: 0159a1a8-42a0-0000-0000-000000000000 UEFI: American Megatrends
+    v: P10.30 date: 07/09/2024
+CPU:
+  Info: model: AMD Ryzen 5 3600 socket: AM4 bits: 64 type: MT MCP arch: Zen 2
+    gen: 2 level: v3 note: check built: 2020-22 process: TSMC n7 (7nm)
+    family: 0x17 (23) model-id: 0x71 (113) stepping: 0 microcode: 0x8701034
+  Topology: cpus: 1x dies: 1 clusters: 1 cores: 6 threads: 12 tpc: 2
+    smt: enabled cache: L1: 384 KiB desc: d-6x32 KiB; i-6x32 KiB L2: 3 MiB
+    desc: 6x512 KiB L3: 32 MiB desc: 2x16 MiB
+  Speed (MHz): avg: 3574 min/max: 550/3600 boost: enabled
+    base/boost: 3600/4200 scaling: driver: amd-pstate-epp governor: powersave
+    volts: 1.1 V ext-clock: 100 MHz cores: 1: 3574 2: 3574 3: 3574 4: 3574
+    5: 3574 6: 3574 7: 3574 8: 3574 9: 3574 10: 3574 11: 3574 12: 3574
+    bogomips: 86397
+  Flags: avx avx2 ht lm nx pae sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3 svm
+  Vulnerabilities:
+  Type: gather_data_sampling status: Not affected
+  Type: ghostwrite status: Not affected
+  Type: itlb_multihit status: Not affected
+  Type: l1tf status: Not affected
+  Type: mds status: Not affected
+  Type: meltdown status: Not affected
+  Type: mmio_stale_data status: Not affected
+  Type: reg_file_data_sampling status: Not affected
+  Type: retbleed mitigation: untrained return thunk; SMT enabled with STIBP
+    protection
+  Type: spec_rstack_overflow mitigation: Safe RET
+  Type: spec_store_bypass mitigation: Speculative Store Bypass disabled via
+    prctl
+  Type: spectre_v1 mitigation: usercopy/swapgs barriers and __user pointer
+    sanitization
+  Type: spectre_v2 mitigation: Retpolines; IBPB: conditional; STIBP:
+    always-on; RSB filling; PBRSB-eIBRS: Not affected; BHI: Not affected
+  Type: srbds status: Not affected
+  Type: tsx_async_abort status: Not affected
+Graphics:
+  Device-1: NVIDIA TU106 [GeForce RTX 2060 SUPER] vendor: Gigabyte
+    driver: nvidia v: 550.163.01 alternate: nvidiafb,nouveau,nvidia_drm
+    non-free: 550/565.xx+ status: current (as of 2025-01; EOL~2026-12-xx)
+    arch: Turing code: TUxxx process: TSMC 12nm FF built: 2018-2022 pcie:
+    gen: 3 speed: 8 GT/s lanes: 16 ports: active: none off: DP-2,HDMI-A-1
+    empty: DP-1,DP-3 bus-ID: 07:00.0 chip-ID: 10de:1f06 class-ID: 0300
+  Display: unspecified server: X.Org v: 21.1.16 with: Xwayland v: 24.1.6
+    compositor: kwin_x11 driver: X: loaded: nvidia gpu: nvidia,nvidia-nvswitch
+    display-ID: :0 screens: 1
+  Screen-1: 0 s-res: 3640x1920 s-dpi: 80 s-size: 1156x609mm (45.51x23.98")
+    s-diag: 1307mm (51.44")
+  Monitor-1: DP-2 pos: primary,top-left res: N/A
+    size: 598x336mm (23.54x13.23") modes: N/A
+  Monitor-2: HDMI-0 pos: bottom-r res: N/A size: 798x334mm (31.42x13.15")
+    modes: N/A
+  API: EGL v: 1.5 hw: drv: nvidia nouveau drv: nvidia platforms: device: 0
+    drv: nvidia device: 1 drv: nouveau device: 2 drv: swrast gbm: drv: nvidia
+    surfaceless: drv: nvidia x11: drv: nvidia inactive: wayland
+  API: OpenGL v: 4.6.0 compat-v: 4.5 vendor: nvidia mesa v: 550.163.01
+    glx-v: 1.4 direct-render: yes renderer: NVIDIA GeForce RTX 2060
+    SUPER/PCIe/SSE2 memory: 7.81 GiB
+  API: Vulkan v: 1.4.304 layers: 7 device: 0 type: discrete-gpu name: NVIDIA
+    GeForce RTX 2060 SUPER driver: N/A device-ID: 10de:1f06 surfaces: xcb,xlib
+    device: 1 type: cpu name: llvmpipe (LLVM 19.1.7 256 bits) driver: N/A
+    device-ID: 10005:0000 surfaces: xcb,xlib
+  Info: Tools: api: clinfo, eglinfo, glxinfo, vulkaninfo
+    de: kscreen-console,kscreen-doctor gpu: nvidia-settings,nvidia-smi
+    wl: wayland-info x11: xdriinfo, xdpyinfo, xprop, xrandr
+Audio:
+  Device-1: NVIDIA TU106 High Definition Audio vendor: Gigabyte
+    driver: snd_hda_intel v: kernel pcie: gen: 3 speed: 8 GT/s lanes: 16
+    bus-ID: 07:00.1 chip-ID: 10de:10f9 class-ID: 0403
+  Device-2: Advanced Micro Devices [AMD] Starship/Matisse HD Audio
+    vendor: ASRock driver: snd_hda_intel v: kernel pcie: gen: 4 speed: 16 GT/s
+    lanes: 16 bus-ID: 09:00.4 chip-ID: 1022:1487 class-ID: 0403
+  Device-3: C-Media USB PnP Sound Device
+    driver: hid-generic,snd-usb-audio,usbhid type: USB rev: 1.1 speed: 12 Mb/s
+    lanes: 1 mode: 1.1 bus-ID: 5-4:3 chip-ID: 0d8c:013a class-ID: 0300
+  API: ALSA v: k6.14.0-15-generic status: kernel-api
+    tools: alsactl,alsamixer,amixer
+  Server-1: PipeWire v: 1.2.7 status: n/a (root, process) with:
+    1: pipewire-pulse status: active 2: wireplumber status: active
+    tools: pactl,pw-cat,pw-cli,wpctl
+Network:
+  Device-1: Realtek RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet
+    vendor: ASRock driver: r8169 v: kernel pcie: gen: 1 speed: 2.5 GT/s lanes: 1
+    port: f000 bus-ID: 05:00.0 chip-ID: 10ec:8168 class-ID: 0200
+  IF: enp5s0 state: up speed: 1000 Mbps duplex: full mac: <filter>
+  Device-2: Microsoft Xbox Wireless Adapter for Windows driver: mt76x2u
+    type: USB rev: 2.0 speed: 480 Mb/s lanes: 1 mode: 2.0 bus-ID: 1-6:6
+    chip-ID: 045e:02e6 class-ID: 0000 serial: <filter>
+  IF: wlx6245b4f37828 state: down mac: <filter>
+  Info: services: NetworkManager, systemd-timesyncd, wpa_supplicant
+Drives:
+  Local Storage: total: 238.47 GiB used: 64.13 GiB (26.9%)
+  ID-1: /dev/nvme0n1 maj-min: 259:0 vendor: Seagate model: XPG GAMMIX S41
+    size: 238.47 GiB block-size: physical: 512 B logical: 512 B speed: 31.6 Gb/s
+    lanes: 4 tech: SSD serial: <filter> fw-rev: VB421D65 temp: 35.9 C
+    scheme: GPT
+  SMART: yes health: PASSED on: 1y 165d 6h cycles: 2,201
+    read-units: 70,725,803 [36.2 TB] written-units: 112,872,916 [57.7 TB]
+Partition:
+  ID-1: / raw-size: 81.09 GiB size: 81.09 GiB (100.00%)
+    used: 16.93 GiB (20.9%) fs: btrfs block-size: 4096 B dev: /dev/nvme0n1p3
+    maj-min: 259:3
+  ID-2: /boot/efi raw-size: 512 MiB size: 511 MiB (99.80%)
+    used: 7.7 MiB (1.5%) fs: vfat block-size: 512 B dev: /dev/nvme0n1p1
+    maj-min: 259:1
+  ID-3: /home raw-size: 140.88 GiB size: 140.88 GiB (100.00%)
+    used: 47.19 GiB (33.5%) fs: btrfs block-size: 4096 B dev: /dev/nvme0n1p4
+    maj-min: 259:4
+Swap:
+  Kernel: swappiness: 10 (default 60) cache-pressure: 100 (default) zswap: no
+  ID-1: swap-1 type: file size: 512 MiB used: 0 KiB (0.0%) priority: -2
+    file: /swap/swapfile
+Sensors:
+  System Temperatures: cpu: 36.9 C mobo: N/A gpu: nvidia temp: 45 C
+  Fan Speeds (rpm): N/A gpu: nvidia fan: 49%
+Info:
+  Memory: total: 16 GiB available: 15.54 GiB used: 5.03 GiB (32.3%)
+  Processes: 415 Power: uptime: 1h 18m states: freeze,mem,disk suspend: deep
+    avail: s2idle wakeups: 0 hibernate: platform avail: shutdown, reboot,
+    suspend, test_resume image: 6.18 GiB services: org_kde_powerdevil,
+    power-profiles-daemon, upowerd Init: systemd v: 257 default: graphical
+    tool: systemctl
+  Packages: 2887 pm: dpkg pkgs: 2876 libs: 1778 tools: apt,apt-get,aptitude
+    pm: flatpak pkgs: 0 pm: snap pkgs: 11 Compilers: gcc: 14.2.0
+    Shell: Sudo (sudo) v: 1.9.16p2 default: Bash v: 5.2.37 running-in: konsole
+    inxi: 3.3.37
+franklin@pcgamerlinux:~$
