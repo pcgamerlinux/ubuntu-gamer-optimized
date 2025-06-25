@@ -2,27 +2,40 @@
 # =============================================================================
 # partitioning.sh — Fase 1: Particionamento e montagem com Btrfs (compress=zstd)
 # Projeto: ubuntu-gamer-optimized | https://github.com/pcgamerlinux/ubuntu-gamer-optimized
-# Nível: Profissional (Apple/Microsoft-style)
 # =============================================================================
 
 set -euo pipefail
 
 # === VARIÁVEIS BASE =========================================================
-LOG_FILE="/tmp/partitioning.log"
+LOG_FILE="/var/log/ubuntu-gamer-partitioning.log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
 mount_point="/mnt"
 DEFAULT_DISK="/dev/nvme0n1"
 
 # === FUNÇÕES UTILITÁRIAS ====================================================
-log()    { echo -e "\e[1;36m[INFO]\e[0m $1" | tee -a "$LOG_FILE"; }
+log()    { echo -e "\e[1;36m[INFO]\e[0m $1"; }
 warn()   { echo -e "\e[1;33m[AVISO]\e[0m $1"; }
 error()  { echo -e "\e[1;31m[ERRO]\e[0m $1" >&2; exit 1; }
 confirm(){ read -rp "$(echo -e "\e[1;33m[?]\e[0m $1 [s/N]: ")" resp; [[ "$resp" =~ ^[sS]$ ]]; }
+
+# === PRÉ-VALIDAÇÃO ==========================================================
+[[ $EUID -ne 0 ]] && error "Este script deve ser executado como root (sudo)."
+
+ping -c 1 8.8.8.8 &>/dev/null || warn "Sem internet. Isso pode afetar futuras etapas."
+
+[[ -d "$mount_point" ]] || error "Diretório de montagem $mount_point não existe. Verifique sua mídia."
+
+command -v sgdisk >/dev/null || error "sgdisk não encontrado. Instale o pacote 'gdisk'."
+command -v mkfs.btrfs >/dev/null || error "mkfs.btrfs não encontrado. Instale o pacote 'btrfs-progs'."
 
 # === DETECÇÃO DO HARDWARE ===================================================
 log "Detectando informações do sistema..."
 
 DISK="$(lsblk -ndo NAME,TYPE | grep 'disk' | head -n1 | awk '{print "/dev/" $1}')"
 [[ -z "$DISK" ]] && DISK="$DEFAULT_DISK"
+
+[[ ! -b "$DISK" ]] && error "Disco $DISK não encontrado. Verifique o cabo, VM ou altere manualmente no script."
 
 DISK_SIZE_BYTES=$(blockdev --getsize64 "$DISK")
 DISK_SIZE_GB=$((DISK_SIZE_BYTES / 1024 / 1024 / 1024))
@@ -55,7 +68,7 @@ echo "  Swap: $SWAP_SIZE"
 echo "  Root: $ROOT_SIZE"
 echo "  Home: espaço restante"
 
-confirm "Deseja continuar com esse particionamento no disco $DISK?" || error "Abortado."
+confirm "Deseja continuar com esse particionamento no disco $DISK?" || error "Abortado pelo usuário."
 
 # === PARTICIONAMENTO ========================================================
 log "Iniciando particionamento em $DISK..."
